@@ -1,2 +1,2 @@
-# meteo
+# projet météo
 
