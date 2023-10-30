@@ -1,2 +1,1 @@
-# meteo
-# jeanne
+# Projet personnel - météo à Montpellier
