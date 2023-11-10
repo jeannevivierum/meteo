@@ -11,3 +11,4 @@ Ce projet permet d’interroger un API et de récupérer les données météorol
 open-meteo.com
 ### Documentation
 https://quarto.org/docs/publishing/github-pages.html
+https://developer.mozilla.org/fr/docs/Web/HTML
