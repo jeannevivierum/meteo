@@ -9,10 +9,8 @@ from datetime import datetime
 
  
 
-# Remplacez 'VOTRE_CLE_API' par votre propre clé API
 
-
-api_key = '7c0285446e8bff2402e8c943c46e26ef' #A REMPLACER
+api_key = '7c0285446e8bff2402e8c943c46e26ef' 
 
 
 city = 'Montpellier'
@@ -25,7 +23,7 @@ url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&
 response = requests.get(url)
 
 
-data = response.json()#mettre les données dans un dictionnaire
+data = response.json() #mettre les données dans un dictionnaire
 
  
 
@@ -35,7 +33,7 @@ print("Bienvenue dans l'application météo !\nVoulez vous ajouter la méteo Act
 leChoix = int(input("Votre choix :"))
 
  
-
+# partie peut-être inutile mais pour l'instant on la garde
 if leChoix == 1:
 
 
@@ -83,7 +81,7 @@ if leChoix == 1:
        
 
 
-        # Obtenir la date et l'heure actuelles
+        # Obtenir date et heure actuelles
 
 
         current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -96,7 +94,7 @@ if leChoix == 1:
         try:
 
 
-            with open('/Users/jeanne/Desktop/meteo/testgithubdesktop/meteo.json', 'r') as file: #A REMPLACER
+            with open('/Users/jeanne/Desktop/meteo/testgithubdesktop/meteo.json', 'r') as file: 
 
 
                 meteo_data = json.load(file)
