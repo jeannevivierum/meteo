@@ -1,0 +1,6 @@
+title: "My Document"
+format:
+  html: 
+    theme: cosmo
+    fontsize: 1.1em
+    linestretch: 1.7
