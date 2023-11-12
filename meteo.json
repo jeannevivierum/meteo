@@ -1,5 +1,4 @@
 [
-    {},
     {
         "city": "Montpellier",
         "description": "moderate rain",
@@ -7,6 +6,15 @@
         "humidity": 89,
         "wind_speed": 10.8,
         "timestamp": "2023-10-30 16:58:15",
+        "prevision": false
+    },
+    {
+        "city": "Montpellier",
+        "description": "clear sky",
+        "temperature": 16.72,
+        "humidity": 65,
+        "wind_speed": 7.2,
+        "timestamp": "2023-11-12 17:47:07",
         "prevision": false
     }
 ]

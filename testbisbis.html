@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -77,61 +43,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Météo à Montpellier</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hello"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>hello</code></pre>
-</div>
-</div>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Nom</th>
-<th style="text-align: right;">Âge</th>
-<th>Ville</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Jean</td>
-<td style="text-align: right;">25</td>
-<td>Paris</td>
-</tr>
-<tr class="even">
-<td>Marie</td>
-<td style="text-align: right;">28</td>
-<td>Lyon</td>
-</tr>
-<tr class="odd">
-<td>Ahmed</td>
-<td style="text-align: right;">22</td>
-<td>Berlin</td>
-</tr>
-<tr class="even">
-<td>Emily</td>
-<td style="text-align: right;">{{v}}`</td>
-<td>New York</td>
-</tr>
-</tbody>
-</table>
+<section id="météo-à-montpellier" class="level1">
+<h1>Météo à Montpellier</h1>
 
 
 <!-- Coding By CodingNepal - www.codingnepalweb.com -->
@@ -139,29 +54,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
     <meta charset="utf-8">
     <title>Weather App Project JavaScript | CodingNepal</title>
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer=""></script>
+    
   
   
-    <h1>Weather Dashboard</h1>
-    <div class="container">
-      <div class="weather-input">
-        <h3 class="anchored">Enter a City Name</h3>
-        <input class="city-input" type="text" placeholder="E.g., New York, London, Tokyo">
-        <button class="search-btn">Search</button>
-        <div class="separator"></div>
-        <button class="location-btn">Use Current Location</button>
-      </div>
+   
       <div class="weather-data">
-        <div class="current-weather">
+
+        <div class="card">
           <div class="details">
-            <h2 class="anchored">_______ ( ______ )</h2>
+            <h2 class="anchored" data-anchor-id="météo-à-montpellier">_______ ( ______ )</h2>
             <h6 class="anchored">Temperature: __°C</h6>
             <h6 class="anchored">Wind: __ M/S</h6>
             <h6 class="anchored">Humidity: __%</h6>
           </div>
         </div>
+
         <div class="days-forecast">
           <h2 class="anchored">5-Day Forecast</h2>
           <ul class="weather-cards">
@@ -198,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </ul>
         </div>
       </div>
-    </div>
+    </section></main></div>
     
   
 
@@ -710,7 +618,9 @@ h1 {
 
  
 
-</main>
+
+
+
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -945,7 +855,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</div> <!-- /content -->
+ <!-- /content -->
 
 
 

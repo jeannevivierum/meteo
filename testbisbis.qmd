@@ -3,27 +3,22 @@
 
 
 
+
+``` {=html}
+
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - www.codingnepalweb.com -->
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>Weather App Project JavaScript | CodingNepal</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Jeanne Météo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
+    
   </head>
   <body>
-    <h1>Weather Dashboard</h1>
-    <div class="container">
-      <div class="weather-input">
-        <h3>Enter a City Name</h3>
-        <input class="city-input" type="text" placeholder="E.g., New York, London, Tokyo">
-        <button class="search-btn">Search</button>
-        <div class="separator"></div>
-        <button class="location-btn">Use Current Location</button>
-      </div>
+   
       <div class="weather-data">
+
         <div class="current-weather">
           <div class="details">
             <h2>_______ ( ______ )</h2>
@@ -32,6 +27,7 @@
             <h6>Humidity: __%</h6>
           </div>
         </div>
+
         <div class="days-forecast">
           <h2>5-Day Forecast</h2>
           <ul class="weather-cards">
@@ -77,347 +73,10 @@
 // Fonction pour charger et afficher les données depuis le fichier JSON
 
 
-function displayWeatherData() {
-
-
-    fetch('meteo.json')
-
-
-        .then(response => response.json())
-
-
-        .then(data => {
-
-
-            const weatherData = document.getElementById('weatherData');          
-
-
-            let day=[];
-
-
-            let temperature=[];  
-
-
-            let estPrevision=[];      
-
-
-            let moiEtudié = document.getElementById('moisAnnee').value;
-
-
-            if(moiEtudié==="")
-
-
-            {
-
-
-               
-
-
-                const dateActuelle = new Date();
-
-
-                const anneeActu = dateActuelle.getFullYear();
-
-
-                const moisActu = (dateActuelle.getMonth() + 1).toString().padStart(2, "0");
-
-
-                moiEtudié = `${anneeActu}-${moisActu}`;
-
-
-                console.log("Mois actuel : " + moiEtudié);
-
-
-               
-
- 
-
-            }
-
-
-            const match = moiEtudié.match(/(\d{4})-(\d{2})/);
-
- 
-
-           
-
-
-            // match[1] contient l'année, match[2] contient le mois
-
-
-            let annee = match[1];
-
-
-            let mois = match[2];
-
-
-            console.log("Année : " + annee);
-
-
-            console.log("Mois : " + mois);
-
-
-               
-
-
-            console.log(moiEtudié);
-
- 
-
-            data.forEach(entry => {
-
-
-                const dateObj = new Date(entry.timestamp);
-
-
-                // Obtenez le jour du mois (numéro du jour)
-
-
-                const jourDuMois = dateObj.getDate();
-
-
-                if (dateObj.getFullYear() == annee && dateObj.getMonth() + 1 == mois){
-
-
-                    const row = document.createElement('tr');
-
-
-                    row.innerHTML = `
-
-
-                        <td>${entry.timestamp}</td>
-
-
-                        <td>${entry.description}</td>
-
-
-                        <td>${entry.temperature}</td>
-
-
-                        <td>${entry.humidity}</td>
-
-
-                        <td>${entry.wind_speed}</td>
-
-
-                        <td>${entry.prevision}</td>
-
-
-                    `;
-
-
-                    weatherData.appendChild(row);
-
-
-                    day.push(entry.temperature);
-
-
-                    // Convertissez la chaîne en objet Date
-
-
-                    estPrevision.push(entry.prevision);
-
-
-                    temperature.push(jourDuMois);
-
-
-                    console.log(jourDuMois,entry.temperature)
-
-
-                }
-
-
-                else{console.log(dateObj.getFullYear(),annee,dateObj.getMonth() + 1,mois);}
-
-
-            });
-
-
-            console.log(day,temperature)
-
-
-            displaGraph(temperature,day,estPrevision);
-
-
-        })
-
-
-        .catch(error => {
-
-
-            console.error('Une erreur s\'est produite lors du chargement du fichier JSON :', error);
-
-
-        });
-
-
-       
-
-
-       
-
-
-}
-
- 
-
-function displaGraph(xArray,yArray,estPrevision){
-
-
-    color=[];
-
-
-    for(elem of estPrevision){
-
-
-        if(elem=="true" || elem){
-
-
-            color.push("red");
-
-
-        }
-
-
-        else{
-
-
-            color.push("blue");
-
-
-        }
-
-
-    }
-
- 
-
-    // Define Data
-
-
-    const data = [{
-
-
-    x: xArray,
-
-
-    y: yArray,
-
-
-    mode:"markers",
-
-
-    type:"scatter",
-
-
-    mode:"markers",
-
-
-    marker: {
-
-
-        color: color,
-
-
-        size: 5
-
-
-    }
-
-
-    }];
-
- 
-
-    // Define Layout
-
-
-    const layout = {
-
-
-    xaxis: {range: [0, 31], title: "Jour du mois "},
-
-
-    yaxis: {range: [-20, 50], title: "Température"},
-
-
-    title: "Températu du mois  "
-
-
-    };
-
- 
-
-    Plotly.newPlot("myPlot", data, layout);
-
-
-}
-
- 
-
-// Appeler la fonction pour afficher les données lors du chargement de la page
-
-
-//window.onload = displayWeatherData;
-
 </script>
  
 
-    <h1>Nuage de Points de Température</h1>
-
-
-    <div id="myPlot"></div>
-
-
-    <input type="month" id="moisAnnee" name="moisAnnee">
-
-
-    <button onclick="displayWeatherData()">Actualiser</button>
-
- 
-
-    <h1>Météo à Montpellier</h1>
-
-
-    <table>
-
-
-        <thead>
-
-
-            <tr>
-
-
-                <th>Date et Heure   </th>
-
-
-                <th>Description     </th>
-
-
-                <th>Température (°C)    </th>
-
-
-                <th>Humidité (%)    </th>
-
-
-                <th>Vitesse du vent (m/s)   </th>
-
-
-                <th>Est une Prevision?</th>
-
-
-            </tr>
-
-
-        </thead>
-
-
-        <tbody id="weatherData"></tbody>
-
- 
-
-    </table>
-
+   
 
    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 * {
