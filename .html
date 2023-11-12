@@ -1,12 +1,48 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <title> Météo Montpellier </title>
-   </head>
-   <body>
-   </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Météo Montpellier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        #weather-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Information</h1>
+
+    <div id="weather-container">
+        <h2>City: <span id="city">Montpellier</span></h2>
+        <p>Temperature: <span id="temperature">--</span> °C</p>
+        <p>Condition: <span id="condition">--</span></p>
+        <p>Humidity: <span id="humidité">--</span>%</p>
+        <p>Wind Speed: <span id="vitesse du vent">--</span> km/h</p>
+    </div>
+
+    <script>
+        // Here, you would typically use JavaScript to fetch weather data from an API and update the HTML elements.
+        // For simplicity, I'll just populate some dummy data.
+
+        document.getElementById('city').innerText = 'New York';
+        document.getElementById('temperature').innerText = '25';
+        document.getElementById('condition').innerText = 'Clear';
+        document.getElementById('humidity').innerText = '50';
+        document.getElementById('wind-speed').innerText = '10';
+    </script>
+</body>
 </html>
- 
+
  
  
  
