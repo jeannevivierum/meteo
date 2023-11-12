@@ -1,23 +1,35 @@
 
-# Title level 1
+# Météo à Montpellier
 
-## Title level 2
-
-
-# Another title level 1
-
-## Another title level 2
-
-
-This would be a paragraph. You can use **bold font** but also *italic* or  ~~strikethrough~~.
-
-Other elements are listed below :
-
-- item 1
-- item 2
-  - sub-item 1
-  - sub-item 2
 
 ```{python}
 print("hello")
+v = 42
+```
+
+| Nom          | Âge | Ville         |
+|--------------|----:|---------------|
+| Jean         | 25  | Paris         |
+| Marie        | 28  | Lyon          |
+| Ahmed        | 22  | Berlin        |
+| Emily        | {{v}}`| New York      |
+
+
+``` {=html}
+
+<table>
+  <caption>As described in the section above, Quarto tables are great.</caption>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>test</td>
+      <td>Regular output</td>
+    </tr>
+  </tbody>
+</table>
 ```
