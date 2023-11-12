@@ -1,0 +1,36 @@
+---
+title: "quarto-meteo"
+---
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+```{r}
+1 + 1
+```
+
+``` {html}
+
+<table>
+  <caption>As described in the section above, Quarto tables are great.</caption>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>test</td>
+      <td>Regular output</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+```{python}
+import numpy as np
+print(np.sum(np.ones(12)))
+```
+
