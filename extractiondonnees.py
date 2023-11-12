@@ -1,4 +1,3 @@
-# code meteo
 import requests
 
 
@@ -9,8 +8,10 @@ from datetime import datetime
 
  
 
+# Remplacez 'VOTRE_CLE_API' par votre propre clé API
 
-api_key = '7c0285446e8bff2402e8c943c46e26ef' 
+
+api_key = '7c0285446e8bff2402e8c943c46e26ef' #A REMPLACER
 
 
 city = 'Montpellier'
@@ -23,7 +24,7 @@ url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&
 response = requests.get(url)
 
 
-data = response.json() #mettre les données dans un dictionnaire
+data = response.json()#mettre les données dans un dictionnaire
 
  
 
@@ -33,7 +34,7 @@ print("Bienvenue dans l'application météo !\nVoulez vous ajouter la méteo Act
 leChoix = int(input("Votre choix :"))
 
  
-# partie peut-être inutile mais pour l'instant on la garde
+
 if leChoix == 1:
 
 
@@ -81,7 +82,7 @@ if leChoix == 1:
        
 
 
-        # Obtenir date et heure actuelles
+        # Obtenir la date et l'heure actuelles
 
 
         current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -94,7 +95,7 @@ if leChoix == 1:
         try:
 
 
-            with open('/Users/jeanne/Desktop/meteo/testgithubdesktop/meteo.json', 'r') as file: 
+            with open('/Users/jeanne/Desktop/meteo/testgithubdesktop/meteo.json', 'r') as file: #A REMPLACER
 
 
                 meteo_data = json.load(file)
@@ -172,13 +173,20 @@ elif leChoix == 2:
     # Endpoint pour obtenir les prévisions des prochains jours
 
 
-    url = f'http://api.openweathermap.org/data/2.5/ChaquePrevision?q={city}&appid={api_key}&units=metric'
+    api_key = '7c0285446e8bff2402e8c943c46e26ef' #A REMPLACER
 
+
+    city = 'Montpellier'
+
+
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'  
+
+    
 
     response = requests.get(url)
 
 
-    data = response.json()
+    data = response.json()#mettre les données dans un dictionnaire
 
  
 
@@ -300,6 +308,7 @@ elif leChoix == 2:
 
 
         print('Impossible de récupérer les données météorologiques.')
+
 
 
 

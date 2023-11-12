@@ -65,12 +65,52 @@
         </div>
       </div>
     </div>
+    <button>test42 </button>
+    <div id="test"></div>
     
   </body>
 </html>
 
 <script>
 // Fonction pour charger et afficher les données depuis le fichier JSON
+
+    const fs = require('fs');
+
+function parseJson(jsonData) {
+    try {
+        return JSON.parse(jsonData);
+    } catch (error) {
+        console.error("Erreur lors de la conversion du JSON :", error);
+        return null;
+    }
+}
+
+function recupData(){
+// Lire le contenu du fichier météo.json
+    fs.readFile('meteo.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error("Erreur lors de la lecture du fichier :", err);
+            return;
+        }
+
+        // Appeler la fonction parseJson pour convertir le contenu en objet JavaScript
+        const dataObject = parseJson(data);
+
+        if (dataObject) {
+            // Maintenant, dataObject contient les données du JSON sous forme d'un tableau d'objets
+            console.log(dataObject);
+            return dataObject;
+        } else {
+            console.error("La conversion du JSON a échoué.");
+        }
+    });
+    }
+
+window.onload = function () {
+    
+            data = recupData();
+            document.getElementbyId("test").innerHTML+=data;
+        };
 
 
 </script>
