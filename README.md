@@ -9,12 +9,10 @@ Ce projet permet d’interroger un API et de récupérer les données météorol
 ## Sources
 ### Données
 open-meteo.com
+
 ### Documentation
-Pour utiliser Quarto :  
-https://quarto.org/docs/publishing/github-pages.html   
+Pour utiliser Quarto : https://quarto.org/docs/publishing/github-pages.html   
 
-Pour comprendre les bases en html :  
-https://developer.mozilla.org/fr/docs/Web/HTML
+Pour comprendre les bases en html : https://developer.mozilla.org/fr/docs/Web/HTML
 
-Pour faire l'affichage su site :
-https://www.codingnepalweb.com/weather-app-project-html-javascript/
+Pour faire l'affichage su site : https://www.codingnepalweb.com/weather-app-project-html-javascript/
