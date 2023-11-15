@@ -1,0 +1,19 @@
+project:
+  type: website
+  render:
+    - index.qmd
+
+website:
+  title: "Météo Montpellier Jeanne"
+  site-url: https://jeannevivierum.github.io/meteo/
+  repo-url: https://github.com/jeannevivierum/meteo
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
