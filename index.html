@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>index</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="météo-à-montpellier" class="level1">
+<h1>Météo à Montpellier</h1>
+
+
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+
+  
+    <meta charset="utf-8">
+    <title>Jeanne Météo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  
+  
+
+
+   
+      <div class="weather-data">
+
+        <div class="current-weather" id="temp0">
+          <div class="details">
+            <h2 class="anchored" data-anchor-id="météo-à-montpellier">_______ ( ______ )</h2>
+            <h6 class="anchored">Temperature: __°C</h6>
+            <h6 class="anchored">Wind: __ M/S</h6>
+            <h6 class="anchored">Humidity: __%</h6>
+          </div>
+        </div>
+
+        <div class="days-forecast">
+          <h2 class="anchored">5-Day Forecast</h2>
+          <ul class="weather-cards">
+            <li class="card" id="temp1">
+              <h3 class="anchored">( ______ )</h3>
+              <h6 class="anchored">Temp: __C</h6>
+              <h6 class="anchored">Wind: __ M/S</h6>
+              <h6 class="anchored">Humidity: __%</h6>
+            </li>
+            <li class="card" id="temp2">
+              <h3 class="anchored">( ______ )</h3>
+              <h6 class="anchored">Temp: __C</h6>
+              <h6 class="anchored">Wind: __ M/S</h6>
+              <h6 class="anchored">Humidity: __%</h6>
+            </li>
+            <li class="card" id="temp3">
+              <h3 class="anchored">( ______ )</h3>
+              <h6 class="anchored">Temp: __C</h6>
+              <h6 class="anchored">Wind: __ M/S</h6>
+              <h6 class="anchored">Humidity: __%</h6>
+            </li>
+            <li class="card" id="temp4">
+              <h3 class="anchored">( ______ )</h3>
+              <h6 class="anchored">Temp: __C</h6>
+              <h6 class="anchored">Wind: __ M/S</h6>
+              <h6 class="anchored">Humidity: __%</h6>
+            </li>
+            <li class="card" id="temp5">
+              <h3 class="anchored">( ______ )</h3>
+              <h6 class="anchored">Temp: __C</h6>
+              <h6 class="anchored">Wind: __ M/S</h6>
+              <h6 class="anchored">Humidity: __%</h6>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section></main></div>
+    <div id="testdiv"></div>
+    
+  
+
+
+<script>
+//import data42 from './meteo.json' assert { type: "json" };
+
+async function obtenirInfosMeteoVille(apiKey, city) {
+  const currentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  const forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+  try {
+    // Obtenez les informations météorologiques actuelles
+    const currentWeatherResponse = await fetch(currentWeatherUrl);
+    const currentWeatherData = await currentWeatherResponse.json();
+
+    if (currentWeatherResponse.ok) {
+      const currentWeather = {
+        city: city,
+        description: currentWeatherData.weather[0].description,
+        temperature: currentWeatherData.main.temp,
+        humidity: currentWeatherData.main.humidity,
+        wind_speed: currentWeatherData.wind.speed,
+        timestamp: new Date().toISOString()
+      };
+
+      console.log("Informations météorologiques actuelles :", currentWeather);
+
+      // Obtenez les prévisions météorologiques des 6 prochains jours
+      const forecastResponse = await fetch(forecastUrl);
+      const forecastData = await forecastResponse.json();
+
+      if (forecastResponse.ok) {
+        const forecastDays = {};
+
+        
+        // Itérer sur les données de prévision des 6 prochains jours
+        for (let i = 0; i < forecastData.list.length ; i += 8) {
+          const forecast = forecastData.list[i];
+          const timestamp = forecast.dt_txt;
+
+          forecastDays[timestamp] = {
+            city: city,
+            description: forecast.weather[0].description,
+            temperature: forecast.main.temp,
+            humidity: forecast.main.humidity,
+            wind_speed: forecast.wind.speed,
+            timestamp: timestamp
+          };
+        }
+
+        // Ajouter un nouvel objet de prévision pour le sixième jour
+        const sixthDayForecast = forecastData.list[forecastData.list.length - 1];
+        const sixthDayTimestamp = sixthDayForecast.dt_txt;
+        forecastDays[sixthDayTimestamp] = {
+          city: city,
+          description: sixthDayForecast.weather[0].description,
+          temperature: sixthDayForecast.main.temp,
+          humidity: sixthDayForecast.main.humidity,
+          wind_speed: sixthDayForecast.wind.speed,
+          timestamp: sixthDayTimestamp
+        };
+
+        console.log("Prévisions météorologiques des 6 prochains jours :", forecastDays);
+        return { currentWeather, forecastDays };
+      } else {
+        console.error('Erreur lors de la requête des prévisions météorologiques:', forecastData.message);
+        return null;
+      }
+    } else {
+      console.error('Erreur lors de la requête des informations météorologiques actuelles:', currentWeatherData.message);
+      return null;
+    }
+  } catch (error) {
+    console.error('Erreur lors de la requête à l\'API OpenWeatherMap:', error);
+    return null;
+  }
+}
+
+// Remplacez 'VOTRE_CLE_API' par votre propre clé API et 'Montpellier' par le nom de votre ville
+
+
+
+
+
+
+function remplissage(completeData){
+  let currentWeather = completeData.currentWeather;
+  let myData = completeData.forecastDays;
+  console.log("remplissage");
+  console.log(currentWeather);
+  console.log(myData);
+  let compteur=0;
+  for (let key in myData) {
+    let logo;
+    if(myData[key].description.includes("clear") || myData[key].description.includes("sun")){logo ="<span style='font-size:60px;'>&#9728;</span>"}
+    else if(myData[key].description.includes("broken") || myData[key].description.includes("scattered")){logo ="<span style='font-size:60px;'>&#127780;</span>"}
+    else if(myData[key].description.includes("rain")){logo ="<span style='font-size:60px;'>&#127783;</span>"}
+    else if(myData[key].description.includes("snow")){logo ="<span style='font-size:60px;'>&#127784;</span>"}
+    else if(myData[key].description.includes("thunder")){logo ="<span style='font-size:60px;'>&#127785;</span>"}
+    else if(myData[key].description.includes("mist")){logo ="<span style='font-size:60px;'>&#127787;</span>"}
+    else{logo ="<span style='font-size:60px;'>&#9729;</span>"}
+    document.getElementById("temp"+compteur).innerHTML=logo+"<h2>"+key+"</h2><h3>"+myData[key].city+" ( "+myData[key].description+" )</h3><h6>Temp: "+myData[key].temperature+"C</h6><h6>Wind: "+myData[key].wind_speed+" M/S</h6><h6>Humidity: "+myData[key].humidity+"%</h6>";
+    compteur++;
+
+}
+}
+
+
+async function afficherInfosMeteo() {
+    try {
+        const result = await obtenirInfosMeteoVille('7c0285446e8bff2402e8c943c46e26ef', 'Montpellier');
+        console.log(result);
+        remplissage(result);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des informations météorologiques :', error);
+    }
+}
+
+// Appel de la fonction asynchrone
+
+
+function update(){
+
+    //data = recupData();
+
+    afficherInfosMeteo();
+    console.log("update");
+    
+    
+    //console.log(logs);
+    
+  
+}
+
+// Appeler la fonction update au chargement de la page
+window.onload = function() {
+  update();
+
+  // Définir une intervalle pour appeler la fonction update toutes les 10 minutes (en millisecondes)
+  setInterval(update, 10 * 1000);
+};
+
+
+
+
+
+</script>
+ 
+
+   
+
+   <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+body {
+  background: #E3F2FD;
+}
+h1 {
+  background: #5372F0;
+  font-size: 1.75rem;
+  text-align: center;
+  padding: 18px 0;
+  color: #fff;
+}
+.container {
+  display: flex;
+  gap: 35px;
+  padding: 30px;
+}
+.weather-input {
+  width: 550px;
+}
+.weather-input input {
+  height: 46px;
+  width: 100%;
+  outline: none;
+  font-size: 1.07rem;
+  padding: 0 17px;
+  margin: 10px 0 20px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.weather-input input:focus {
+  padding: 0 16px;
+  border: 2px solid #5372F0;
+}
+.weather-input .separator {
+  height: 1px;
+  width: 100%;
+  margin: 25px 0;
+  background: #BBBBBB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-input .separator::before{
+  content: "or";
+  color: #6C757D;
+  font-size: 1.18rem;
+  padding: 0 15px;
+  margin-top: -4px;
+  background: #E3F2FD;
+}
+.weather-input button {
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #fff;
+  background: #5372F0;
+  transition: 0.2s ease;
+}
+.weather-input .search-btn:hover {
+  background: #2c52ed;
+}
+.weather-input .location-btn {
+  background: #6C757D;
+}
+.weather-input .location-btn:hover {
+  background: #5c636a;
+}
+.weather-data {
+  width: 100%;
+}
+.weather-data .current-weather {
+  color: #fff;
+  background: #5372F0;
+  border-radius: 5px;
+  padding: 20px 70px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.current-weather h2 {
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+.weather-data h6 {
+  margin-top: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.current-weather .icon {
+  text-align: center;
+}
+.current-weather .icon img {
+  max-width: 120px;
+  margin-top: -15px;
+}
+.current-weather .icon h6 {
+  margin-top: -10px;
+  text-transform: capitalize;
+}
+.days-forecast h2 {
+  margin: 20px 0;
+  font-size: 1.5rem;
+}
+.days-forecast .weather-cards {
+  display: flex;
+  gap: 20px;
+}
+.weather-cards .card {
+  color: #fff;
+  padding: 18px 16px;
+  list-style: none;
+  width: calc(100% / 3);
+  background: #6C757D;
+  border-radius: 5px;
+}
+.weather-cards .card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.weather-cards .card img {
+  max-width: 100px;
+  margin: 5px 0 -12px 0;
+}
+@media (max-width: 1400px) {
+  .weather-data .current-weather {
+    padding: 20px;
+  }
+  .weather-cards {
+    flex-wrap: wrap;
+  }
+  .weather-cards .card {
+    width: calc(100% / 3 );
+  }
+}
+@media (max-width: 1200px) {
+  .weather-cards .card {
+    width: calc(100% / 3 );
+  }
+}
+@media (max-width: 950px) {
+  .weather-input {
+    width: 450px;
+  }
+  .weather-cards .card {
+    width: calc(100% / 2 );
+  }
+}
+@media (max-width: 750px) {
+  h1 {
+    font-size: 1.45rem;
+    padding: 16px 0;
+  }
+  .container {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+  .weather-input {
+    width: 100%;
+  }
+  .weather-data h2 {
+    font-size: 1.35rem;
+  }
+
+  .sun {
+    font-size: 24px;
+    font-family: 'Segoe UI Emoji', sans-serif;
+  }
+  
+}
+
+/* Ajout de styles pour rendre l'application plus attrayante */
+
+.weather-data {
+  margin-top: 20px;
+}
+
+.current-weather,
+.weather-cards .card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.current-weather:hover,
+.weather-cards .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajout d'effets de survol sur les cartes météo */
+
+.weather-cards .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.weather-cards .card:hover::before {
+  opacity: 1;
+}
+
+/* Ajout d'un fond d'ombre à l'élément survolé */
+
+.weather-cards .card img {
+  transition: transform 0.3s;
+}
+
+.weather-cards .card:hover img {
+  transform: translateY(-5px);
+}
+
+/* Ajout d'une légère élévation des images au survol */
+
+
+</style>
+
+
+
+
+
+
+
+
+
+ 
+
+<p>```</p>
+
+
+
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+ <!-- /content -->
+
+
+
+</body></html>
