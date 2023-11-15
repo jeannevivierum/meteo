@@ -9,7 +9,7 @@ Ce site météo doit proposer la météo pour les 5 jours à venir dans le ville
 
 ## Commentaires 
 
-Le code d'extractiion des données a été réalisé en Python.  
+Le code d'extraction des données a été réalisé en Python.  
 J'ai conscience que l'utilisation de Quarto n'est pas optimale, puisque l'affichage se fait presque exclusivement en html.  
 Vous trouverez plus bas les pages web qui m'ont servies pour ce projet.
 Pour le moment, le site déployé n'affiche pas les données... elles ne sont visibles que dans la previw du fichier index.qmd, il faut que je trouve une solution.
