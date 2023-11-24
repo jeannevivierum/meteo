@@ -12,8 +12,11 @@ Ce site météo doit proposer la météo pour les 5 jours à venir dans le ville
 Le code d'extraction des données a été réalisé en Python.  
 J'ai conscience que l'utilisation de Quarto n'est pas optimale, puisque l'affichage se fait presque exclusivement en html.  
 Vous trouverez plus bas les pages web qui m'ont servies pour ce projet.
-Pour le moment, le site déployé n'affiche pas les données... elles ne sont visibles que dans la previw du fichier index.qmd, il faut que je trouve une solution. Après de nouveaux essais, je n'ai toujours pas réussi à faire en sorte que les données s'affichent sur le site. Vous trouverez ici une photo de ce qui s'affiche sur mon oridnateur en local: 
+Pour le moment, le site déployé n'affiche pas les données... elles ne sont visibles que dans la preview du fichier index.qmd, il faut que je trouve une solution. Après de nouveaux essais, je n'ai toujours pas réussi à faire en sorte que les données s'affichent sur le site. Vous trouverez ici une photo de ce qui s'affiche sur mon oridnateur en local: 
+
 ![](Sitelocal.png)
+
+J'ai essayé de "retélécharger" le github comme indiqué par Monsieur Salmon pour comprendre le problème, mais je ne l'ai pas trouvé.
 
 ## Sources
 ### Données
